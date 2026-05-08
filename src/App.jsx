@@ -22,7 +22,7 @@ export default function App() {
   const [activeSessionId, setActiveSessionId] = useState(sessions[0].id);
   const [isLoading, setIsLoading] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     if (isDarkMode) {
