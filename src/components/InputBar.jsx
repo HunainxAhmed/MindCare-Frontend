@@ -25,7 +25,7 @@ export default function InputBar({ onSend, disabled }) {
       <div className="max-w-3xl mx-auto">
         <form 
           onSubmit={handleSubmit}
-          className="relative flex items-end gap-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm rounded-2xl p-2 transition-all focus-within:shadow-md focus-within:border-clinical-500/30 dark:focus-within:border-clinical-500/50"
+          className="relative flex items-end gap-2 bg-white/80 dark:bg-slate-900/60 backdrop-blur-2xl border border-white/90 dark:border-slate-700/50 shadow-[0_8px_32px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.2)] rounded-3xl p-2 transition-all focus-within:shadow-[0_8px_40px_rgba(75,136,157,0.15)] focus-within:border-clinical-500/30 dark:focus-within:border-clinical-500/50"
         >
           <textarea
             value={text}
@@ -45,7 +45,7 @@ export default function InputBar({ onSend, disabled }) {
             whileTap={!disabled && text.trim() ? { scale: 0.95 } : {}}
             type="submit"
             disabled={disabled || !text.trim()}
-            className="p-3 mb-1 mr-1 rounded-xl bg-clinical-600 dark:bg-clinical-500 text-white disabled:bg-slate-100 dark:disabled:bg-slate-700 disabled:text-slate-400 dark:disabled:text-slate-500 transition-colors flex-shrink-0"
+            className="p-3 mb-0.5 mr-0.5 rounded-2xl bg-gradient-to-br from-clinical-500 to-clinical-600 text-white disabled:from-slate-200 disabled:to-slate-200 dark:disabled:from-slate-800 dark:disabled:to-slate-800 disabled:text-slate-400 dark:disabled:text-slate-500 transition-all flex-shrink-0 shadow-[0_4px_14px_rgba(75,136,157,0.3)] disabled:shadow-none"
           >
             <Send size={18} className={!disabled && text.trim() ? "translate-x-0.5 -translate-y-0.5" : ""} />
           </motion.button>

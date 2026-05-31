@@ -63,9 +63,9 @@ export default function ChatArea({ messages, isLoading, onQuickPrompt }) {
               {QUICK_PROMPTS.map((prompt, i) => (
                 <motion.button
                   key={i}
-                  whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                  whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }}
                   onClick={() => onQuickPrompt(prompt)}
-                  className="p-4 text-sm text-left bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl text-slate-600 dark:text-slate-300 hover:border-clinical-500/50 hover:bg-clinical-50 dark:hover:bg-clinical-900/20 transition-all shadow-sm"
+                  className="p-4 text-sm text-left bg-white/70 dark:bg-slate-900/40 backdrop-blur-xl border border-white/80 dark:border-slate-700/50 rounded-2xl text-slate-700 dark:text-slate-300 hover:border-clinical-400/50 hover:bg-white/90 dark:hover:bg-slate-800/60 transition-all shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.02)]"
                 >
                   {prompt}
                 </motion.button>
@@ -81,10 +81,10 @@ export default function ChatArea({ messages, isLoading, onQuickPrompt }) {
               layout initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }}
               className="flex justify-start items-end gap-3"
             >
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-clinical-500 to-clinical-400 flex items-center justify-center flex-shrink-0 shadow-sm border border-clinical-100 dark:border-slate-700">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-clinical-500 to-clinical-400 flex items-center justify-center flex-shrink-0 shadow-md border border-clinical-100 dark:border-slate-700">
                 <Sparkles size={14} className="text-white" />
               </div>
-              <div className="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm rounded-2xl rounded-bl-sm px-5 py-4 flex items-center gap-2">
+              <div className="bg-white/80 dark:bg-slate-800/60 backdrop-blur-xl border border-white/80 dark:border-slate-700/50 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.03)] rounded-2xl rounded-bl-sm px-5 py-4 flex items-center gap-2">
                 <span className="text-sm text-slate-500 dark:text-slate-400 font-medium mr-1">MindCare Ai is typing</span>
                 <motion.div className="flex gap-1.5">
                   {[0, 1, 2].map((dot) => (
@@ -105,7 +105,7 @@ export default function ChatArea({ messages, isLoading, onQuickPrompt }) {
 }
 
 function MessageBubble({ message }) {
-  const isAI = message.sender === 'ai';
+  const isAI = message.sender === 'ai' || message.sender === 'assistant';
 
   return (
     <motion.div
@@ -125,10 +125,10 @@ function MessageBubble({ message }) {
 
       {/* Message Content */}
       <div className={`flex flex-col ${isAI ? 'items-start' : 'items-end'} max-w-[80%] sm:max-w-[70%]`}>
-        <div className={`px-5 py-3.5 text-[15px] leading-relaxed text-left transition-colors duration-300 shadow-sm ${
+        <div className={`whitespace-pre-wrap px-5 py-3.5 text-[15px] leading-relaxed text-left transition-all duration-300 ${
           isAI
-            ? `bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-2xl rounded-bl-sm text-slate-700 dark:text-slate-200 ${message.isError ? 'border-red-200 text-red-600 bg-red-50 dark:bg-red-900/20 dark:border-red-900/50' : ''}`
-            : 'bg-clinical-600 dark:bg-clinical-500 text-white rounded-2xl rounded-br-sm'
+            ? `bg-white/80 dark:bg-slate-800/70 backdrop-blur-xl border border-white/80 dark:border-slate-700/50 rounded-2xl rounded-bl-sm text-slate-700 dark:text-slate-200 shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.03)] ${message.isError ? 'border-red-200/50 text-red-600 bg-red-50/50 dark:bg-red-900/20' : ''}`
+            : 'bg-gradient-to-br from-clinical-500 to-clinical-600 text-white rounded-2xl rounded-br-sm shadow-[0_4px_14px_rgba(75,136,157,0.25)]'
         }`}>
           {message.text}
         </div>
