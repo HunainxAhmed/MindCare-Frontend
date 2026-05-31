@@ -90,7 +90,7 @@ function SidebarContent({ sessions, activeSessionId, onNewSession, onSelectSessi
               
               <button
                 onClick={(e) => { e.stopPropagation(); onDeleteSession(session.id); }}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg opacity-0 group-hover:opacity-100 transition-all z-20"
+                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg opacity-100 md:opacity-0 group-hover:opacity-100 transition-all z-20"
                 title="Delete Session"
               >
                 <Trash2 size={14} />
